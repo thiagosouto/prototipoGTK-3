@@ -17,7 +17,7 @@ int main (int argc, char *argv[])
 
   janela = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (janela, "destroy",G_CALLBACK (destroy), NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (janela), 30);
+  //gtk_container_set_border_width (GTK_CONTAINER (janela), 30);
 
   botao = gtk_button_new();
   g_signal_connect (botao, "clicked",G_CALLBACK (funcao_janela), NULL);
@@ -86,10 +86,19 @@ gboolean draw_callback (GtkWidget *widget, cairo_t *cr, gpointer data)
 
   gtk_render_background (context, cr, 0, 0, width, height);
 
-  cairo_arc (cr, width / 2.0, height / 2.0, MIN (width, height) / 2.0, 0 , 2 * G_PI);
+  cairo_arc (cr, width / 2.0, height / 2.0, MIN (width, height) / 4.0, 0 , 1 * G_PI);
+  gdk_rgba_parse (&color ,"rgba(250,250,250,255)");
+  gdk_cairo_set_source_rgba (cr, &color);
+
+  cairo_arc (cr, width / 2.0, height / 2.0, MIN (width, height) / 4.0, 0 , 2 * G_PI);
+  gdk_rgba_parse (&color ,"rgba(150,150,150,255)");
+  gdk_cairo_set_source_rgba (cr, &color);
 
   gtk_style_context_get_color (context, gtk_style_context_get_state (context), &color);
   gdk_cairo_set_source_rgba (cr, &color);
+
+
+
 
   cairo_fill (cr);
 
