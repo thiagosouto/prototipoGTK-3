@@ -26,7 +26,7 @@ void hello (void)
   label= gtk_label_new("DEU RUIM");
   gtk_container_add (GTK_CONTAINER (janela), label);
 
-    gtk_widget_show_all (janela);
+  gtk_widget_show_all (janela);
 
 
 }

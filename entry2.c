@@ -1,71 +1,43 @@
 #include <gtk/gtk.h>
 
+static void output_state (GtkToggleButton *source, gpointer user_data) {
+  printf ("Active: %d\n", gtk_toggle_button_get_active (source));
+}
 void destroy (void)
 {
   gtk_main_quit ();
 }
 
 
-static void initialize_window(GtkWidget* window) {
+int main (int argc, char **argv)
+{
+  GtkWidget *window, *radio1, *radio2, *box, *entry;
 
-  gtk_window_set_title(GTK_WINDOW(window),"My Window");
-  gtk_window_set_default_size (GTK_WINDOW (window), 200, 100);
-  g_signal_connect (window, "destroy", G_CALLBACK (destroy), NULL);
-
-}
-
-int main (int argc, char *argv[]){
-
-  GtkWidget *janela;
-  GtkWidget *grade;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkWidget *entry1;
-  GtkWidget *label1;
-  GtkWidget *label3;
-  GtkWidget *label2;
-  GtkWidget *entry2;
+  gtk_init (&argc, &argv);
 
 
-  gtk_init(&argc, &argv);
-
-
-
-  janela = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  g_signal_connect (janela, "destroy",G_CALLBACK (destroy), NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (janela), 500);
-
-  initialize_window(janela);
-
-  grade = gtk_grid_new ();
-  gtk_container_add (GTK_CONTAINER (janela), grade);
-
-
-
-  label = gtk_label_new ("Circle with standard formula:(x-a)^2 + (y-b)^2 =r*r");
-  gtk_grid_attach (GTK_GRID(grade),label, 1,1,1,1);
-
+  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  g_signal_connect (window, "destroy",G_CALLBACK (destroy), NULL);
+  gtk_container_set_border_width (GTK_CONTAINER (window), 150);
+  box = gtk_box_new (GTK_ORIENTATION_VERTICAL,3);
+  // Create a radio button with a GtkEntry widget
+  radio1 = gtk_radio_button_new (NULL);
   entry = gtk_entry_new ();
-  gtk_grid_attach (GTK_GRID (grade), entry, 1, 2, 1, 2);
-
-  label1 = gtk_label_new ("Input value of a:");
-  gtk_grid_attach (GTK_GRID (grade), entry, 0, 1, 1, 2);
-
-  entry1 = gtk_entry_new();
-  gtk_grid_attach (GTK_GRID (grade), entry1, 1, 2, 2, 3);
-
-  label2=gtk_label_new("Input the value of b:");
-  gtk_grid_attach (GTK_GRID (grade), label2, 0, 1, 2, 3);
-
-  label3=gtk_label_new("Input the value of r:");
-  gtk_grid_attach (GTK_GRID (grade), label3, 0, 1, 3, 4);
-
-  entry2 = gtk_entry_new();
-  gtk_grid_attach (GTK_GRID (grade), entry2, 1, 2, 3, 4);
+  gtk_container_add (GTK_CONTAINER (radio1), entry);
 
 
-  gtk_widget_show_all(janela);
+  // Create a radio button with a label
+  radio2 = gtk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON (radio1),
+                                                        "I’m the second radio button.");
+
+  // Pack them into a box, then show all the widgets
+  gtk_container_add (GTK_CONTAINER (box), radio1);
+  gtk_container_add  ( GTK_CONTAINER(box), radio2);
+  gtk_container_add (GTK_CONTAINER (window), box);
+  gtk_widget_show_all (window);
+
 
   gtk_main ();
+
   return 0;
 }

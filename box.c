@@ -27,7 +27,7 @@ int main (int argc, char *argv[])
   g_signal_connect (janela, "destroy",G_CALLBACK (destroy), NULL);
   gtk_container_set_border_width (GTK_CONTAINER (janela), 30);
 
-  caixa = gtk_box_new (GTK_ORIENTATION_VERTICAL,2);
+  caixa = gtk_box_new (GTK_ORIENTATION_VERTICAL,3);
   gtk_container_add (GTK_CONTAINER (janela), caixa);
 
   botao = gtk_button_new_with_label ("Botao um");
