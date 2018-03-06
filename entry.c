@@ -12,7 +12,7 @@ void destroy (void)
 
 static void printar( GtkWidget *widget, GtkWidget *entry )
 {
-  entry_text = gtk_entry_get_text (GTK_ENTRY (entry));
+  const gchar * entry_text = gtk_entry_get_text (GTK_ENTRY (entry));
   printf ("Esta escrito: %s\n", entry_text);
 }
 
