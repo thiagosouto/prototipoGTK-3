@@ -26,9 +26,13 @@ scrollbar:spin
 	g++ scrollbar.c -o scrollbar `pkg-config --cflags --libs gtk+-3.0`
 spin:toggle
 	g++ spin.c -o spin `pkg-config --cflags --libs gtk+-3.0`
-toggle:limpar
+toggle:volume
 	g++ togglebutton.c -o togglebutton `pkg-config --cflags --libs gtk+-3.0`
+volume:switc
+	g++ volume.c -o volume `pkg-config --cflags --libs gtk+-3.0`
+switc:limpar
+	g++ switch.c -o switch `pkg-config --cflags --libs gtk+-3.0`
 limpar:
 	clear||cls
 clean:
-	rm -f tp *.o radiobutton botao box checkbutton cunvas togglebutton entry grid label link lockbutton scale scrollbar spin
+	rm -f tp *.o radiobutton switch botao box checkbutton cunvas togglebutton entry grid label link lockbutton scale scrollbar spin volume

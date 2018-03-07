@@ -24,7 +24,7 @@ int main (int argc, char *argv[])
 
   janela = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   g_signal_connect (janela, "destroy",G_CALLBACK (destroy), NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (janela), 30);
+  gtk_container_set_border_width (GTK_CONTAINER (janela), 500);
 
   grade = gtk_grid_new ();
   gtk_container_add (GTK_CONTAINER (janela), grade);
@@ -34,7 +34,7 @@ int main (int argc, char *argv[])
   gtk_grid_attach (GTK_GRID(grade),label, 10,1,1,1);
 
 
-  escala = gtk_scale_new ( GTK_ORIENTATION_HORIZONTAL,ajuste2);
+  escala = gtk_volume_button_new ();
   gtk_grid_attach (GTK_GRID(grade),escala, 10,2,1,5);
 
 
