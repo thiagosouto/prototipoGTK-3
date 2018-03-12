@@ -8,8 +8,6 @@ void destroy (void)
 
 void selecao (GtkToggleButton *toggle_button, gpointer user_data)
 {
-
-
   if (gtk_toggle_button_get_active (toggle_button))
       gtk_window_set_title (GTK_WINDOW(user_data), "CheckButton");
   else
