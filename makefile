@@ -1,19 +1,16 @@
 LIBS = `pkg-config --cflags --libs gtk+-3.0`
 CC = g++
-BIN = bin
+BIN = *.gtk
 SRCS=$(wildcard *.c)
 OBJS=$(SRCS:.c=)
 
-all: mkdirs $(OBJS)
+all: $(OBJS)
 
-mkdirs:
-	mkdir -p $(BIN)
-
-%: %.c mkdirs
-	$(CC) -o $@  $< $(LIBS)
+%: %.c
+	$(CC) -o $@.gtk $< $(LIBS)
 
 clean:
-	rm -rf $(BIN)
+	rm -rf $(BIN) 
 	clear
 
 .PHONY: clean mkdirs
